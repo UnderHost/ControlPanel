@@ -3,6 +3,22 @@
 # Check OS version
 OS=$(cat /etc/*-release | grep '^ID=' | cut -d '=' -f 2 | tr -d '"')
 
+# Check for prerequisites
+function check_prerequisites() {
+  echo "Checking prerequisites..."
+  if ! command -v wget &>/dev/null || ! command -v unzip &>/dev/null; then
+    echo "Some required tools are missing. Installing wget and unzip..."
+    if [ -f /etc/debian_version ]; then
+      sudo apt update && sudo apt install -y wget unzip
+    elif [ -f /etc/redhat-release ]; then
+      sudo yum install -y wget unzip
+    else
+      echo "Unsupported OS detected. Exiting."
+      exit 1
+    fi
+  fi
+}
+
 # Script header
 echo "======================================"
 echo " Control Panel Installation Script"
