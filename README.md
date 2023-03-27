@@ -41,5 +41,5 @@ A: Yes, you can run the script multiple times to install different control panel
 
 # Install
 
-wget https://github.com/UnderHost/ControlPanel/archive/refs/heads/main.zip && unzip main.zip && cd ControlPanel-main && chmod +x install_control_panels.sh && ./install_control_panels.sh
+wget https://github.com/UnderHost/ControlPanel/archive/refs/heads/main.zip && unzip main.zip && cd ControlPanel-main && chmod +x ControlPanel.sh && ./ControlPanel.sh
 
