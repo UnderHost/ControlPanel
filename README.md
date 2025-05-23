@@ -1,7 +1,7 @@
 # 🚀 ControlPanel.sh - One-Click Control Panel Installer  
 
-# 🛠️ ControlPanel.sh 
-_Part of the [UnderHost Dedicated Server]([https://underhost.com/cloud](https://underhost.com/servers.php)](https://underhost.com/servers.php)) toolkit_  
+# 🛠️ ControlPanel.sh  
+_For best results, deploy on [UnderHost Dedicated Servers](https://underhost.com/servers.php) (24/7 support included)_
 
 > **v2025.1** | *May 2025* | **Supports: CentOS, Ubuntu, Debian, AlmaLinux, Rocky Linux**  
 
