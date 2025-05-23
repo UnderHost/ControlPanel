@@ -1,45 +1,103 @@
-# ControlPanel.sh - small bash script to easily install control panel
+# 🚀 ControlPanel.sh - One-Click Control Panel Installer  
 
-## Description:
-This one-click installation script allows users to easily install multiple control panels on their servers. The script supports the installation of cPanel, aaPanel, DirectAdmin, Plesk, CyberPanel, CentOS Web Panel, Webmin, and sPanel. It checks the server's OS for compatibility and prompts the user for their hostname before proceeding with the installation. The user can select the desired control panel from a menu, and the script will display the installation progress.
+# 🛠️ ControlPanel.sh 
+_Part of the [UnderHost Dedicated Server]([https://underhost.com/cloud](https://underhost.com/servers.php)](https://underhost.com/servers.php)) toolkit_  
 
-# FAQ:
+> **v2025.1** | *May 2025* | **Supports: CentOS, Ubuntu, Debian, AlmaLinux, Rocky Linux**  
 
-### Q: Which control panels does this script support?
-A: The script supports cPanel, aaPanel, DirectAdmin, Plesk, CyberPanel, CentOS Web Panel, Webmin, and sPanel.
+---
 
-### Q: What are the OS compatibility requirements for each control panel?
-A: The compatibility requirements are as follows:
+## 🔥 **Full Panel List & Compatibility**  
 
-* cPanel: CentOS, CloudLinux, or AlmaLinux
-* aaPanel: CentOS, Ubuntu, or Debian
-* DirectAdmin: CentOS, Debian, or Ubuntu
-* Plesk: CentOS, Ubuntu, Debian, or AlmaLinux
-* CyberPanel: CentOS
-* CentOS Web Panel: CentOS
-* Webmin: CentOS, Ubuntu, or Debian
-* sPanel: CentOS
+| #  | Control Panel    | Supported OS                     | License   | Notes                          |  
+|----|------------------|----------------------------------|-----------|--------------------------------|  
+| 1  | **cPanel**       | CentOS, AlmaLinux, Rocky         | Paid      | Requires license key           |  
+| 2  | **aaPanel**      | CentOS, Ubuntu, Debian           | Free      | Chinese alternative to cPanel  |  
+| 3  | **DirectAdmin**  | CentOS, AlmaLinux, Rocky         | Paid      | Lightweight commercial panel   |  
+| 4  | **Plesk**        | CentOS, Ubuntu, Debian, AlmaLinux| Paid/Free | WordPress toolkit included     |  
+| 5  | **CyberPanel**   | CentOS, Ubuntu                   | Free      | With OpenLiteSpeed/Enterprise  |  
+| 6  | **CentOS Web Panel** | CentOS, AlmaLinux            | Free      | Legacy (use with caution)      |  
+| 7  | **Webmin**       | CentOS, Ubuntu, Debian           | Free      | Admin panel (no hosting focus) |  
+| 8  | **sPanel**       | CentOS, AlmaLinux, Rocky         | Free      | For CentOS-based servers       |  
+| 9  | **HestiaCP**     | Ubuntu, Debian                   | Free      | VestaCP fork                   |  
+| 10 | **RunCloud**     | Ubuntu, Debian                   | Freemium  | Cloud-optimized                |  
+| 11 | **CloudPanel**   | Ubuntu, Debian                   | Free      | PHP/MySQL focus                |  
+| 12 | **Virtualmin**   | CentOS, Ubuntu, Debian           | Free/Paid | Webmin extension               |  
+| 13 | **ISPConfig**    | CentOS, Ubuntu, Debian           | Free      | Advanced open-source panel     |  
+| 14 | **Froxlor**      | CentOS, Ubuntu, Debian           | Free      | Lightweight German panel       |  
 
-### Q: How do I use the script?
-A: Save the script as a .sh file, give it executable permissions (e.g., chmod +x script.sh), and run it using the command ./script.sh. The script will display a list of control panels and prompt you for your choice. Enter the number corresponding to your desired control panel, and the script will proceed with the installation.
+---
 
-### Q: Can I install multiple control panels using this script?
-A: Yes, you can run the script multiple times to install different control panels. However, it's not recommended to install multiple control panels on the same server, as they may conflict with one another.
+## 🛠️ **Installation**  
 
-# Usage:
+### **Method 1: One-Line Install**  
+```
+sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/UnderHost/ControlPanel/main/ControlPanel.sh)"
+```
 
-* Download the script from the GitHub repository by running the following command: wget https://github.com/UnderHost/ControlPanel/archive/refs/heads/main.zip
-* Unzip the downloaded file: unzip main.zip
-* Change the directory to the unzipped folder: cd ControlPanel-main
-* Give the script executable permissions: chmod +x install_control_panels.sh
-* Run the script: ./install_control_panels.sh
-* The script will display a list of available control panels and prompt you for your choice. Enter the number corresponding to the control panel you wish to install.
-* The script will prompt you for your hostname. Enter your desired hostname and press Enter.
-* The script will check your server's OS for compatibility and proceed with the installation if the requirements are met.
-* Monitor the installation progress displayed by the script.
-* Once the installation is complete, follow the control panel's official documentation for further configuration and setup.
+### **Method 2: Manual Download**  
+```
+wget https://github.com/UnderHost/ControlPanel/archive/refs/heads/main.zip
+unzip main.zip
+cd ControlPanel-main
+chmod +x ControlPanel.sh
+sudo ./ControlPanel.sh
+```
 
-# Install
+---
 
-wget https://github.com/UnderHost/ControlPanel/archive/refs/heads/main.zip && unzip main.zip && cd ControlPanel-main && chmod +x ControlPanel.sh && ./ControlPanel.sh
+## 📖 **Usage Guide**  
+1. **Run the script** as root or with `sudo`.  
+2. **Select a panel** from the interactive menu.  
+3. **Enter hostname** when prompted (e.g., `server.yourdomain.com`).  
+4. **Wait** – The script handles dependencies automatically.  
+5. **Post-install**:  
+   - Credentials are saved to `/root/panel_credentials.txt`  
+   - Installation logs: `/var/log/controlpanel_install.log`  
+
+---
+
+## ❓ **FAQ**  
+
+### **Q: How do I update the script?**  
+```
+cd /path/to/ControlPanel-main && wget -qO ControlPanel.sh https://raw.githubusercontent.com/UnderHost/ControlPanel/main/ControlPanel.sh
+```
+
+### **Q: Can I automate installations?**  
+Yes! For non-interactive mode (e.g., HestiaCP on Ubuntu):  
+```
+echo "9" | sudo ./ControlPanel.sh  # Installs HestiaCP (option #9)
+```
+
+### **Q: What if my OS isn’t supported?**  
+The script will **block incompatible installations**. For manual overrides:  
+```
+sudo FORCE_INSTALL=1 ./ControlPanel.sh  # Use at your own risk!
+```
+
+---
+
+## 🛡️ **Security Best Practices**  
+1. **Always** set strong passwords post-install.  
+2. **Enable firewalls**:  
+   ```
+   sudo ufw allow 22,80,443,2082,2083,2086,2087  # Common panel ports
+   sudo ufw enable
+   ```
+3. **Disable root SSH**: Edit `/etc/ssh/sshd_config` and set `PermitRootLogin no`.  
+
+---
+
+## 📜 **License & Credits**  
+- **License**: MIT (Free for personal/commercial use).  
+- **Disclaimer**: Not affiliated with cPanel, Plesk, or other panel vendors.  
+- **Support**: For issues, open a [GitHub Issue](https://github.com/UnderHost/ControlPanel/issues).  
+
+---
+
+### 🌟 **Why This Script?**  
+- **Saves hours** of manual configuration.  
+- **No hidden code** – Verify with `less ControlPanel.sh`.  
+- **Used by UnderHost.com** for internal server deployments.  
 
