@@ -4,6 +4,8 @@
 > _Fully interactive, OS-aware, production-ready installer for 20+ control panels._
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/version-2026.1.0-green.svg)](https://github.com/UnderHost/one-domain/blob/main/docs/CHANGELOG.md)
+[![UnderHost](https://img.shields.io/badge/by-UnderHost.com-orange)](https://underhost.com)
 
 ---
 
